@@ -1,0 +1,82 @@
+﻿@*@model Voodoo.Video.Models.ViewModels.CameraManagerViewModels.CameraManagerViewModel*@
+@using Voodoo.Video.Models.Application
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var numbers = new string[] {"Top", "Bottom"};
+
+    var cams = new List<Camera>
+    {
+        new Camera("one", "one", "123", 1, 1)
+//        new Camera("one", "one", "123", 1, 1),
+//        new Camera("two", "two", "123", 1, 1),
+//        new Camera("three", "three", "123", 1, 1),
+//        new Camera("four", "four", "123", 1, 1)
+    };
+}
+<script asp-append-version="true" src="vendor/bootstable/bootstable.js"></script>
+
+<!--!! GRID WRAPPER -->
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h2>Cameras</h2>
+        <div id="camera-table"></div>
+@*         <table class="table table-dark table-hover table-striped" id="camera-table" data-toggle="table"> *@
+@*             <thead class="thead-dark"> *@
+@*             <tr> *@
+@*                 <th scope="col">Name</th> *@
+@*                 <th scope="col">Description</th> *@
+@*                 <th scope="col">IP</th> *@
+@*                 <th scope="col">Resolution</th> *@
+@*             </tr> *@
+@*             </thead> *@
+@*             <tbody> *@
+@*             <tr class="no-data"><td colspan="4"> your first camera</td></tr> *@
+@*             @foreach (var camera in Model.Cameras) *@
+@*             { *@
+@*                 <tr> *@
+@*                     <th scope="row">@camera.Name</th> *@
+@*                     <td>@camera.Description</td> *@
+@*                     <td>@camera.IpAddress</td> *@
+@*                     <td>@camera.ResWidth @camera.ResHeight</td> *@
+@*                 </tr> *@
+@*             } *@
+@*             </tbody> *@
+@*             <tfoot class="thead-dark"><tr><th colspan="5"></th></tr></tfoot> *@
+@*         </table> *@
+    </div>
+</div>
+
+<div>
+    <button class="border-success btn btn-outline-success rounded-pill" id="btn-add-camera"><i class="fa fa-plus"></i> Add Camera</button>
+</div>
+<script>
+// $("#camera-table").SetEditable({
+//     $addButton: $('#btn-add-camera'),
+//     columnsEd: "0,1,2,3",    
+//     onEdit: function(e) { console.log(e); },
+//     onDelete: function() { console.log("delete"); },
+//     onBeforeDelete: function() { console.log("beforeDelete"); },
+//     onAdd: function(e) { console.log(e); }
+// });
+
+const cols = [
+    {title: "Name", field: "Name", sorter: "string", editor: true },
+    {title: "Description", field: "Description", sorter: "string", editor: true },
+    {title: "IP Address", field: "IpAddress", sorter: "alphanum", editor: true },
+    {title: "Resolution", columns: [
+        {title: "Width", field: "ResWidth", sorter: "number", editor: true },
+        {title: "Height", field: "ResHeight", sorter: "number", editor: true }
+    ]}
+];
+
+
+var table = new Tabulator("#camera-table", {
+    columns: cols,
+    ajaxUrl: "/camera/cameralist"
+});
+
+
+
+</script>

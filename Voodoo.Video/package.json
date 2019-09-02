@@ -1,0 +1,41 @@
+{
+    "name": "voodoo.video",
+    "version": "1.0.0",
+    "description": "Electron based web client application for viewing/managing ip cameras.",
+    "main": "wwwroot/js/site.js",
+    "scripts": {
+        "test": "echo --testing",
+        "vendor-bundle": "browserify -r jquery/dist/jquery -r jquery-ui-dist/jquery-ui-min -r jquery-ui-dist/external/jquery/jquery > vendor.bundle.js",
+        "app-bundle" : ""      
+    },
+    "keywords": [
+        "electron",
+        "surveillance",
+        "asp.net",
+        "core",
+        "camera"
+    ],
+    "author": "Joe Veihl",
+    "license": "MIT",
+    "dependencies": {
+        "gridstack": "0.4.0",
+        "jquery": "^3.4.1",
+        "jquery-ui-dist": "^1.12.1",
+        "lodash": "4.17.15",
+        "malihu-custom-scrollbar-plugin": "^3.1.5",
+        "pjax": "^0.2.8",
+        "requirejs": "2.3.6",
+        "tabulator-tables": "^4.4.1",
+        "underscore": "^1.9.1"
+    },
+    "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.10.2",
+        "browserify": "^16.5.0",
+        "browserify-css": "^0.15.0",
+        "electron-reload": "1.5.0",
+        "gulp": "4.0.2",
+        "gulp-cached": "1.1.1",
+        "minifyify": "^7.3.5",
+        "watchify": "^3.11.1"
+    }
+}

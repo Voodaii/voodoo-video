@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!-- FIXED TOP NAVBAR -->
+<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+    <!--!! TOGGLER FOR COLLAPSED NAVBAR -->
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!--!! NAVBAR BRAND SECTION -->
+    <a class="navbar-brand" href="#">
+        <img src="~/img/brand/VoodooVideoLogoRing.png" width="40" height="40" class="d-inline-block align-top navbar-icon" alt="">
+        <h3 class="disappear yes-vis d-inline-block text-warning">Voodoo Video</h3>
+    </a>
+    
+    <!--!! HEADER FOR DISPLAYING THE CURRENT LAYOUT -->
+    <div id="layout-header">
+        <h3 id="current-layout-name" data-layoutid=""></h3>
+    </div>
+    
+    <!--!! USER ACCOUNT NAV SECTION -->
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            @*<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">*@
+            <button class="btn btn-outline-warning border-warning rounded-pill" type="button" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="ni ni-single-02 pr-2"></span> Account
+            </button>
+            <partial name="~/Views/Shared/Navbar/_Dropdown.cshtml" />
+        </li>
+    </ul>
+</nav>
+<!-- NavBar END -->

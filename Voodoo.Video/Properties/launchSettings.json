@@ -1,0 +1,34 @@
+{
+    "iisSettings": {
+        "windowsAuthentication": false,
+        "anonymousAuthentication": true,
+        "iisExpress": {
+            "applicationUrl": "http://localhost:60151",
+            "sslPort": 44308
+        }
+    },
+    "profiles": {
+        "Electron.NET App": {
+            "commandName": "Executable",
+            "executablePath": "electronize",
+            "commandLineArgs": "start",
+            "workingDirectory": "."
+        },
+
+        "IIS Express": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "Voodoo.Video": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "applicationUrl": "https://localhost:6970;http://localhost:6969"
+        }
+    }
+}

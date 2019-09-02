@@ -1,0 +1,9 @@
+﻿@model List<Voodoo.Video.Models.Application.CameraLayout>
+
+@foreach (var layout in Model)
+{
+    <a href="#" class="btn-layout sidebar-btn list-group-item list-group-item-action bg-primary text-white" data-id="@layout.Id">
+        <span class="fa fa-grip-vertical fa-fw mr-3 text-warning">1</span>
+        <span class="sidebar-label sidebar-label-shown">@layout.Name</span>
+    </a>
+}

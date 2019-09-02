@@ -1,0 +1,286 @@
+﻿
+/* Load the jQuery UI style first. This allows other scripts to override the defaults. */
+@import url("../../node_modules/jquery-ui-dist/jquery-ui.min.css");
+/* Load in our icon plugins. */
+@import url("../vendor/nucleo/css/nucleo-svg.css");
+@import url("../vendor/nucleo/css/nucleo.css");
+@import url("../../node_modules/@fortawesome/fontawesome-free/css/all.css");
+
+
+
+/* THE REST OF THIS FILE WILL CONTAIN OUT CUSTOM SITE STYLING */
+
+/*!! BODY MODS*/
+body {
+    overflow-x: hidden;
+    margin-top: 60px;
+}
+
+#body-row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.header {
+    margin-top: 100px;
+}
+
+/*!! LOGO STYLING */
+.round-logo {
+    border-radius: 50px;
+    box-shadow: 0 0 20px 8px rgba(0, 0, 0, .1);
+}
+
+
+/*!! NAVBAR MODS */
+.navbar.fixed-top {
+    min-height: 60px;
+    max-height: 60px;
+    box-shadow: 0 0 20px 8px rgba(0, 0, 0, .2);
+}
+
+.navbar-brand {
+    padding: 8px 10px 8px 5px;
+}
+
+.navbar-brand > h3 {
+    padding-left: 20px;
+}
+
+/*!! SIDEBAR MODS */
+#sidebar-container {
+    /*min-height: 100vh;*/
+    /*background-color: #333;*/
+    /*padding: 0;*/
+    box-shadow: 0 0 20px 8px rgba(0, 0, 0, .2);
+}
+
+li.sidebar-menu.sidebar-expanded {
+    min-height: 50px;
+    max-height: 50px;
+    height: 50px;
+}
+
+a.sidebar-btn {
+    min-height: 50px;
+    max-height: 50px;
+    height: 50px;
+    padding-bottom: 10px;
+}
+
+.sidebar-label-group {
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+}
+
+.sidebar-title {
+    font-size: 0.9rem;
+    margin-bottom: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+.sidebar-title.l2.font-norm {
+    font-size: .75rem;
+}
+
+.sidebar-title.l2.font-sm {
+    font-size: .6rem;
+}
+
+.sidebar-label-shown {
+    position: inherit;
+    visibility: visible;
+    opacity: 1;
+    transition: all .5s ease-in;
+}
+
+.sidebar-label-hidden {
+    text-align: center;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s linear;
+}
+
+/* Separators */
+.sidebar-separator-title {
+    background-color: #333;
+    height: 35px;
+}
+
+.sidebar-separator {
+    background-color: #333;
+    height: 25px;
+}
+
+.logo-separator {
+    background-color: #333;
+    height: 60px;
+}
+
+#sidebar-toggler {
+    padding-left: 15px;
+}
+
+/* set the sidebar width */
+.w-sidebar {
+    width: 200px;
+    max-width: 200px;
+}
+
+/* optional for overlay sidebar on small screens */
+@media (max-width: 768px) {
+    .row.collapse,
+    .row.collapsing {
+        margin-left: 0 !important;
+        left: 0 !important;
+        overflow: visible;
+    }
+
+    .row > .sidebar.collapse {
+        display: flex !important;
+        margin-left: -100% !important;
+        transition: all .3s linear;
+        position: fixed;
+        z-index: 1050;
+        max-width: 0;
+        min-width: 0;
+        flex-basis: auto;
+    }
+
+    /*- MAY NEED THIS -*/
+    /*.row > .sidebar.collapse.show {
+            margin-left: 0 !important;
+            width: 100%;
+            max-width: 100%;
+            min-width: initial;
+        }*/
+    .row > .sidebar.collapsing {
+        display: flex !important;
+        margin-left: -10% !important;
+        transition: all .2s linear !important;
+        position: fixed;
+        z-index: 1050;
+        min-width: initial;
+    }
+}
+
+/* Sidebar sizes when expanded and collapsed */
+.sidebar-expanded {
+    width: 200px;
+    max-width: 200px;
+    transition: all .5s;
+}
+
+.sidebar-collapsed {
+    width: 60px;
+    max-width: 60px;
+    transition: all .5s;
+}
+
+.sidebar-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: all .1s, opacity .1s linear;
+}
+
+.sidebar-shown {
+    visibility: visible;
+    opacity: 1;
+    transition: all .1s, opacity .5s linear;
+}
+
+
+/*!! CARDS */
+.card {
+    border-radius: 15px;
+    /*padding: 10px;*/
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, .3);
+    height: 100%;
+}
+
+.card-header {
+    /*height: 100%;*/
+    border-radius: 15px 15px 0 0 !important;
+}
+
+.card-footer:last-child  {
+    border-radius: 0 0 15px 15px;
+}
+
+
+
+/*!! GRID STACK */
+.grid-stack-item:hover {
+    cursor: grab;
+}
+
+.grid-stack-item:focus {
+    cursor: grabbing;
+}
+
+#main-menu {
+    height: 40px;
+    max-height: 40px;
+    min-height: 40px;
+}
+
+
+.p-opts {
+    padding-left: 5px;
+}
+
+.p-menu {
+    padding-left: 12px;
+}
+
+.mm-disappear {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.mm-appear {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s linear, opacity 1s linear;
+    transition-delay: 2s;
+}
+
+.msg-badge-r {
+    right: 20px;
+    top: -5px;
+    transition: right .2s;
+}
+
+.msg-badge-l {
+    right: -15px;
+    top: -5px;
+    transform: scale(.8);
+    transition: right .2s;
+}
+
+.chev {
+    top: 7px;
+    right: 0;
+}
+
+.rup {
+    transform: rotate(180deg);
+    transition: rotation 1s;
+}
+
+.rdn {
+    transform: rotate(0deg);
+    transition: rotation 1s;
+}
+
+/*!! GENERAL COMPONENT MODIFICATIONS */
+.btn.rounded-pill {
+    padding: 5px 15px 5px 15px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    background-color: var(--theme-text-warning);
+}

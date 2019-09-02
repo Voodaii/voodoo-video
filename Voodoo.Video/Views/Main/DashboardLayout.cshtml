@@ -1,0 +1,91 @@
+﻿@model Voodoo.Video.Models.LayoutViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@if (Model.CameraLayout != null)
+{
+    <!--!! GRID WRAPPER -->
+    <div class="row my-9 py-9 scr">
+        <div class="col-12 text-center">
+
+            <!--!! EMBED THE LAYOUT NAME IN THE PAGE -->
+            <input type="hidden" id="layout-name-hidden"
+                   data-id="@Model.CameraLayout.Id"
+                   data-qty="@Model.CameraLayout.CameraTiles.Count"
+                   value="@Model.CameraLayout.Name"/>
+
+
+            @if (!Model.CameraLayout.CameraTiles.Any())
+            {
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1> Add tiles.</h1>
+                    </div>
+                </div>
+            }
+
+
+            <!--!! MAIN GRID DIV -->
+            <div id="main-grid" class="grid-stack">
+                <!--!! CREATE A GRID STACK ITEM FOR EACH TILE IN THE LAYOUT -->
+                @foreach (var tile in Model.CameraLayout.CameraTiles)
+                {
+                    <!--!! CAMERA TILE   AKA: GRID STACK ITEM -->
+                    <div class="grid-stack-item" data-gs-x="@tile.X" data-gs-y="@tile.Y" data-gs-width="@tile.Width" data-gs-min-width="4" data-gs-height="@tile.Height" data-gs-min-height="6">
+
+                        <!--!! GRID ITEM -->
+                        <div class="grid-stack-item-content">
+
+                            <!--!! CAMERA TILE CARD -->
+                            <div class="card">
+
+                                <!--!! CAMERA CARD HEADER-->
+                                <div class="card-header @tile.HeaderColor text-white">
+                                    <h5>@tile.Title</h5>
+                                    <small class="text-muted">@tile.Description</small>
+                                </div>
+
+                                <!--!! CAMERA CARD BODY-->
+                                <div class="card-body overflow-auto scrollbar-inner">
+                                    <p class="card-text">
+                                        <img src="@tile.Camera.IpAddress" class="video-feed"/>
+                                    </p>
+                                </div>
+
+                                <!--!! CAMERA CARD FOOTER-->
+                                <div class="card-footer text-center">
+                                    <button class="btn btn-outline-danger border-danger btn-sm">Button</button>
+                                    <button class="btn btn-outline-warning border-warning btn-sm">Button</button>
+                                    <button class="btn btn-outline-success border-success btn-sm">Button</button>
+                                </div>
+
+                            </div><!--End Card-->
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <!--!! END MAIN GRID DIV -->
+
+        </div>
+    </div>
+}
+else
+{
+    <!--!! IF WE DONT HAVE A CAMERA LAYOUT, DISPLAY THE CREATE LAYOUT MESSAGE -->
+    <div class="row my-9 py-9 scr">
+        <div class="col-12 text-center">
+            <h4>Create a Dashboard layout.</h4>
+            <button class="new-layout btn btn-outline-success border-success rounded-pill"><span class="fa fa-plus"></span> New Layout</button>
+        </div>
+    </div>
+}
+
+
+@section Scripts
+{
+    <script src="js/Views/Main/DashboardLayout.js" asp-append-version="true"></script>
+}

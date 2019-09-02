@@ -1,0 +1,139 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!--!! SIDEBAR WRAPPER -->
+<div class="sidebar sidebar-expanded col-3 p-0 vh-100 h-100  collapse d-none d-md-flex">
+    <!--!! SIDEBAR NAV -->
+    <!--!! Sidebar Container-->
+    <div id="sidebar-container" class="sidebar sidebar-expanded position-fixed bg-dark text-white h-100">
+        <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+        
+        <!--!! SIDEBAR LIST GROUP -->
+        <ul id="sidebar-list" class="nav flex-column sidebar-expanded">
+            
+            <!-- Separator with title -->
+            <li id="main-menu" class="text-warning sidebar-label-group flexy yes-flex align-items-center sidebar-expanded">
+                <h6 class="sidebar-title">MAIN<span class="sidebar-sub-label sidebar-label-shown"> MENU</span></h6>
+            </li>
+            <!-- /END Separator -->
+            
+            <!--!! DASHBOARD -->
+            <li id="drop1" class="sidebar-menu sidebar-expanded" value="0">
+                <a id="btn-dashboard" href="#" class="sidebar-btn bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-start align-items-center position-relative">
+                        <span class="fa fa-th fa-fw mr-3" data-toggle="tooltip" data-placement="right" data-trigger="hover" title="Dashboard"></span>
+                        <span class="sidebar-label sidebar-label-shown">Dashboard</span>
+                        @*!! This icon will need to be rotated when the submenu is open.*@
+                        <span id="dash-chev" class="fa fa-chevron-down ml-auto position-absolute chev rdn"></span>
+                    </div>
+                </a>
+            </li>
+            <!--!! Dashboard Submenu content -->
+            <li class="sidebar-expanded">
+                <div id="submenu1" class="sidebar-submenu yes-vis collapse">
+                    <a href="#" class="new-layout sidebar-btn list-group-item list-group-item-action bg-primary text-white">
+                        <span class="fa fa-plus fa-fw mr-3 text-success"></span>
+                        <span class="sidebar-label sidebar-label-shown">New Layout</span>
+                    </a>
+                    <div id="dashboard-layouts">
+                        <!--!! Dashboard selector buttons will go here. -->
+                    </div>
+                </div>
+            </li>
+            
+            <!--!! PROFILE -->
+            <li id="drop2" role="button" class="sidebar-menu sidebar-expanded" value="0">
+                <a href="#" id="drp-profile" class="sidebar-btn bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-start align-items-center position-relative">
+                        <span class="fa fa-user fa-fw mr-3"></span>
+                        <span class="sidebar-label sidebar-label-shown">Profile</span>
+                        @*!! This icon will need to be rotated when the submenu is open.*@
+                        <span id="profile-chev" class="fa fa-chevron-down ml-auto position-absolute chev rdn"></span>
+                    </div>
+                </a>
+            </li>
+            <!--!! Profile Submenu content -->
+            <li class="sidebar-expanded">
+                <div id="submenu2" aria-hidden="true" class="sidebar-submenu collapse">
+                    <a href="#" class="sidebar-btn list-group-item list-group-item-action bg-primary text-white">
+                        <span class="fa fa-cogs fa-fw mr-3"></span>
+                        <span class="sidebar-label sidebar-label-shown">Settings</span>
+                    </a>
+                    <a href="#" class="sidebar-btn list-group-item list-group-item-action bg-primary text-white">
+                        <span class="fa fa-lock fa-fw mr-3"></span>
+                        <span class="sidebar-label sidebar-label-shown">Password</span>
+                    </a>
+                </div>
+            </li>
+
+            <!--!! TASKS -->
+            <li id="btn-cameras" class="sidebar-menu sidebar-expanded">
+                <a href="#" class="sidebar-btn bg-dark list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-video fa-fw mr-3"></span>
+                        <span class="sidebar-label sidebar-label-shown">Cameras</span>
+                    </div>
+                </a>
+            </li>
+
+            <!-- Separator with title -->
+            <li id="opts" class="text-warning sidebar-label-group list-group-item sidebar-separator-title d-flex sidebar-expanded">
+                <h6 class="sidebar-title l2 font-norm">OPTIONS</h6>
+            </li>
+            <!-- /END Separator -->
+
+            <!--!! CALENDAR -->
+            <li class="sidebar-menu sidebar-expanded">
+                <a href="#" class="sidebar-btn bg-dark list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-calendar fa-fw mr-3"></span>
+                        <span class="sidebar-label sidebar-label-shown">Calendar</span>
+                    </div>
+                </a>
+            </li>
+            
+            <!--!! MESSAGES -->
+            <li class="sidebar-menu sidebar-expanded">
+                <a href="#" class="sidebar-btn bg-dark list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center position-relative">
+                        <span class="fab fa-facebook-messenger mr-3"></span>
+                        <span class="sidebar-label sidebar-label-shown">Messages</span>
+                        <span id="msg-badge" class="msg-badge-r badge badge-pill badge-danger position-absolute ml-2">5</span>
+                    </div>
+                </a>
+            </li>
+
+            <!-- Separator without title -->
+            <li class="list-group-item sidebar-separator sidebar-expanded"></li>
+            <!-- /END Separator -->
+            
+            <!--!! HELP -->
+            <li class="sidebar-menu sidebar-expanded">
+                <a href="#" class="sidebar-btn bg-dark list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-question fa-fw mr-3"></span>
+                        <span class="sidebar-label sidebar-label-shown">Help</span>
+                    </div>
+                </a>
+            </li>
+            
+            <!--!! COLLAPSE -->
+            <li id="sidebar-toggler" data-toggle="sidebar-collapse" class="sidebar-toggle list-group-item logo-separator sidebar-expanded">
+                <a href="#" class="list-group-item-action">
+                    <div class="d-flex w-100 align-items-center">
+                        <span id="collapse-icon" class="fa fa-2x mr-3"></span>
+                        <span id="collapse-text" class="sidebar-label sidebar-label-shown">Collapse</span>
+                    </div>
+                </a>
+            </li>
+            
+        </ul><!-- List Group END-->
+    </div><!-- Sidebar-Container END -->
+</div><!-- Sidebar Wrapper END -->
+
+@section Scripts {
+    <script src="js/Views/Shared/Sidebar/Sidebar.js" asp-append-version="true"></script>
+}
