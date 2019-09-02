@@ -1,0 +1,22 @@
+{
+    "name": "voodoo.video",
+    "version": "1.0.0",
+    "description": "Electron based web client application for viewing/managing ip camers.",
+    "main": "wwwroot/js/site.js",
+    "scripts": {
+        "test": "test"
+    },
+    "keywords": [
+        "electron",
+        "surveillance",
+        "asp.net",
+        "core",
+        "camera"
+    ],
+    "author": "Joe Veihl",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "electron-reloader": "^0.3.0"
+    }
+}
