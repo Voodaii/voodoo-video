@@ -2,32 +2,27 @@
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
-
 
 <div class="container">
     <div class="card">
-        <div class="card-header bg-success text-white text-center">
+        <div class="bg-success card-header text-center text-white">
             <h4>Create New Layout</h4>
         </div>
         <div class="card-body">
-            <form id="frm-new-layout" asp-controller="Main" asp-action="CreateNewLayout" method="post">
+            <form asp-action="CreateNewLayout" asp-controller="Main" id="frm-new-layout" method="post">
                 <div class="form-group">
                     <label for="layout-name">Layout Name</label>
                     <input asp-for="Name" class="form-control" id="layout-name" aria-describedby="nameHelp" placeholder="Name">
-                    <small id="nameHelp" class="form-text text-muted">Give your new layout a name that indicates its content.</small>
+                    <small class="form-text text-muted" id="nameHelp">Give your new layout a name that indicates its content.</small>
                 </div>
             </form>
         </div>
         <div class="card-footer text-center">
-            <button id="btn-cancel-layout" class=" btn btn-outline-danger border-danger btn-lg rounded-pill">Cancel</button>
-            <button id="btn-create-layout" class="btn btn-outline-success border-success btn-lg rounded-pill">Create</button>
+            <button class="border-danger btn btn-lg btn-outline-danger rounded-pill" id="btn-cancel-layout">Cancel</button>
+            <button class="border-success btn btn-lg btn-outline-success rounded-pill" id="btn-create-layout">Create</button>
         </div>
     </div>
 </div>
 
-@section Scripts
-{
-    <script src="js/Views/Main/NewDashboardLayout.js" asp-append-version="true"></script>
-}
+
+<script asp-append-version="true" src="js/Views/Main/NewDashboardLayout.js"></script>

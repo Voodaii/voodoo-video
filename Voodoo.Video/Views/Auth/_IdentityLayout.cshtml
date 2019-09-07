@@ -1,23 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <!--!! MAYBE TO HELP WITH SCRIPT CONFLICTS. WE WILL HAVE TO SEE THOUGH. -->
-        <script>
-            // const _ = require('lodash');
-            if (typeof module === 'object') { window.module = module; module = undefined; }
-        </script>
+    <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+    
     @*This will load any relevant metadata and the theme style*@
     <partial name="_PageHeadElement"/>
 
-    @*This prevents some issues instantiating some of the plugins.*@
-    @* <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script> *@
-
-    @*Plugin Style*@
-    <partial name="~/Views/Shared/Scripts/_PluginStyles.cshtml"/>
-    
-    @* <partial name="~/Views/Shared/Scripts/_ThemeStyles.cshtml"/> *@
+    @*Site Style*@
+    <partial name="Scripts/_SiteStyles"/>
     
 
     @*Universal Site Scripts*@
@@ -40,9 +31,7 @@
     <partial name="Auth/_IdentityFooter"/>
 </div>
 
-
-@RenderSection("Scripts", required: false)
-
+<partial name="Scripts/_ValidationScriptsPartial"/>
 
 <!--!! THIS SCRIPT IS TO HELP AVOID PLUGIN CONFLICTS -->
 <script>if (window.module) module = window.module;</script>

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Voodoo.Video.Data.Seeders;
 using Voodoo.Video.Models.Identity;
 using ElectronNET.API;
+using Microsoft.AspNetCore;
 
 namespace Voodoo.Video
 {
@@ -15,8 +16,8 @@ namespace Voodoo.Video
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
-            //CreateHostBuilder(args).Build().Run();
+           var host = CreateHostBuilder(args).Build();
+           // var host = CreateWebHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())
             {
@@ -45,8 +46,8 @@ namespace Voodoo.Video
                     //webBuilder.UseElectron(args);
                 });
 
-        // public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        //     WebHost.CreateDefaultBuilder(args)
-        //         .UseStartup<Startup>();
+//        private static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+//            //WebHost.CreateDefaultBuilder(args).UseStartup<Startup>().UseElectron(args);
+//            WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
     }
 }

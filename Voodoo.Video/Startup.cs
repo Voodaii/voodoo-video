@@ -18,6 +18,7 @@ using Voodoo.Video.Infrastructure.AppSettingsModels;
 using Voodoo.Video.Models.Identity;
 using ElectronNET.API;
 using ElectronNET.API.Entities;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace Voodoo.Video
 {
@@ -46,7 +47,8 @@ namespace Voodoo.Video
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
@@ -88,7 +90,7 @@ namespace Voodoo.Video
                 // You might want to only set the application cookies over a secure connection:
                 // options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                 options.Cookie.SameSite = SameSiteMode.Strict;
-                options.ExpireTimeSpan = TimeSpan.Zero;//FromMinutes(60);
+                options.ExpireTimeSpan = TimeSpan.Zero; //FromMinutes(60);
                 options.SlidingExpiration = true;
             });
 
@@ -113,36 +115,37 @@ namespace Voodoo.Video
 
             services.AddMvc(options =>
             {
-                // Slugify routes so that we can use /employee/employee-details/1 instead of
-                // the default /Employee/EmployeeDetails/1
-                //
-                // Using an outbound parameter transformer is a better choice as it also allows
-                // the creation of correct routes using view helpers
+                options.EnableEndpointRouting = false;
+                 //Slugify routes so that we can use /employee/employee-details/1 instead of
+                 //the default /Employee/EmployeeDetails/1
+                
+                 //Using an outbound parameter transformer is a better choice as it also allows
+                 //the creation of correct routes using view helpers
                 options.Conventions.Add(
                     new RouteTokenTransformerConvention(
                         new SlugifyParameterTransformer()));
 
-                // Enable Antiforgery feature by default on all controller actions
-                // See more at https://docs.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.2
+                 //Enable Antiforgery feature by default on all controller actions
+                 //See more at https://docs.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.2
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-            }).AddRazorPagesOptions(options =>
-            {
-                // Perform the same slugify configuration for Razor pages
-                options.Conventions.Add(
-                    new PageRouteTransformerConvention(
-                        new SlugifyParameterTransformer()));
-
-                options.Conventions.AddAreaPageRoute("Identity", "/Account/Register", "/register");
-                options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "/login");
-                options.Conventions.AddAreaPageRoute("Identity", "/Account/Logout", "/logout");
-                options.Conventions.AddAreaPageRoute("Identity", "/Account/ForgotPassword", "/forgot-password");
+           }).AddRazorPagesOptions(options =>
+           {
+//                // Perform the same slugify configuration for Razor pages
+//                options.Conventions.Add(
+//                    new PageRouteTransformerConvention(
+//                        new SlugifyParameterTransformer()));
+//
+//                options.Conventions.AddAreaPageRoute("Identity", "/Account/Register", "/register");
+//                options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "/login");
+//                options.Conventions.AddAreaPageRoute("Identity", "/Account/Logout", "/logout");
+//                options.Conventions.AddAreaPageRoute("Identity", "/Account/ForgotPassword", "/forgot-password");
             }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
 
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddRazorPages();
+            //services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            //services.AddRazorPages().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             // You probably want to use in-memory cache if not developing using docker-compose
-            services.AddMemoryCache();
+            //services.AddMemoryCache();
             // services.AddDistributedRedisCache(action => { action.Configuration = Configuration["Redis:InstanceName"]; });
 
             services.AddSession(options =>
@@ -164,19 +167,18 @@ namespace Voodoo.Video
         {
             // This is required to make the application work behind a proxy like NGINX or HAPROXY
             // that also provides TLS termination (switching from incoming HTTPS to HTTP)
-            //app.UseForwardedHeaders();
+            app.UseForwardedHeaders();
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
                 //app.UseDatabaseErrorPage();
             }
             else
             {
                 app.UseExceptionHandler("/error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                //app.UseHsts();
+                app.UseHsts();
             }
 
             app.UseStatusCodePagesWithReExecute("/status-code", "?code={0}");
@@ -185,53 +187,55 @@ namespace Voodoo.Video
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseRouting();
+            //app.UseRouting();
 
             app.UseAuthentication();
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseSession();
 
-            app.UseEndpoints(endpoints =>
+//            app.UseEndpoints(endpoints =>
+//            {
+//                endpoints.MapControllerRoute(
+//                    name: "default",
+//                    pattern: "{controller=home}/{action=index}/{id?}");
+//                endpoints.MapRazorPages();
+//            });
+
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=home}/{action=index}/{id?}");
-                endpoints.MapRazorPages();
+                    template: "{controller=home}/{action=index}/{id?}");
             });
 
             //// Whether the chrome dev tools are accessible.
-            var showDevTools = env.IsDevelopment();
+            //var showDevTools = env.IsDevelopment();
 
             //// Web browser preferences.
             //TODO Look into EnableBlinkFeatures options.
-            var webPrefs = new WebPreferences
-            {
-                DevTools = showDevTools
-            };
-
-            var windowOptions = new BrowserWindowOptions
-            {
-                DarkTheme = true,
-                Width = 1920,
-                MinWidth = 450,
-                Height = 1080,
-                MinHeight = 600,
-                Title = "Voodoo Video",
-                BackgroundColor = "#161616",
-                WebPreferences = webPrefs
-            };
+//            var webPrefs = new WebPreferences
+//            {
+//                DevTools = showDevTools
+//            };
+//
+//            var windowOptions = new BrowserWindowOptions
+//            {
+//                DarkTheme = true,
+//                Width = 1920,
+//                MinWidth = 450,
+//                Height = 1080,
+//                MinHeight = 600,
+//                Title = "Voodoo Video",
+//                BackgroundColor = "#161616",
+//                WebPreferences = webPrefs
+//            };
 
 
             //// Launch the Electron window.
             //Task.Run(async () => await Electron.WindowManager.CreateWindowAsync(windowOptions));
 
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=home}/{action=index}/{id?}");
-            //});
+//            
         }
     }
 }

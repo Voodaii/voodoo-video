@@ -1,25 +1,20 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <!--!! MAYBE TO HELP WITH SCRIPT CONFLICTS. WE WILL HAVE TO SEE THOUGH. -->
     <script>
         // const _ = require('lodash');
         if (typeof module === 'object') { window.module = module; module = undefined; }
     </script>
-
-
     @*Load additional metadata and theme style sheets*@
     <partial name="_PageHeadElement"/>
-
     @*Plugin Style*@
     <partial name="Scripts/_PluginStyles"/>
-    @RenderSection("Styles", required: false)
-    
-    @*Plugin Scripts*@
+    @*Site Style*@
+    <partial name="Scripts/_SiteStyles"/>
+
+    <partial name="Scripts/_SiteScripts"/>
     <partial name="Scripts/_PluginScripts"/>
-    @RenderSection("HeadScripts", required: false)
 
 </head>
 <body>
@@ -31,7 +26,7 @@
 
     @* <partial name="_Header"/> *@
 
-    <div class="row vh-100 collapse no-gutters d-flex h-100 position-relative">
+    <div class="collapse d-flex h-100 no-gutters position-relative row vh-100">
         @*!! SIDEBAR*@
         <partial name="Sidebar/_Sidebar"/>
         @*!! SIDEBAR*@
@@ -43,14 +38,13 @@
         @*!! MAIN BODY CONTENT*@
     </div>
 </div>
-<ejs-scripts nonce="12345"></ejs-scripts>
-<partial name="Scripts/_ArgonScripts"/>
 
-<partial name="Scripts/_SiteScripts"/>
+@* <partial name="Scripts/_ArgonScripts"/> *@
+
+
+
 
 @RenderSection("Scripts", required: false)
-
-
 
 <!--!! THIS SCRIPT IS TO HELP AVOID PLUGIN CONFLICTS -->
 <script>if (window.module) module = window.module;</script>

@@ -1,4 +1,5 @@
-﻿let body = $("body");
+﻿
+let body = $("body");
 
 $(document).ready(function () {
     //! Sidebar is completely gone at <= 768px;
@@ -34,6 +35,7 @@ $(document).ready(function () {
 
     //!! Get the new layout form.
     $(".new-layout").on("click", function () {
+        console.log("new layout clicked");
         $.ajax({
             method: "GET",
             url: "/new-layout-form",

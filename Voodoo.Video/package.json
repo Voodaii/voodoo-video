@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo --testing",
         "vendor-bundle": "browserify -r jquery/dist/jquery -r jquery-ui-dist/jquery-ui-min -r jquery-ui-dist/external/jquery/jquery > vendor.bundle.js",
-        "app-bundle" : ""      
+        "app-bundle": ""
     },
     "keywords": [
         "electron",

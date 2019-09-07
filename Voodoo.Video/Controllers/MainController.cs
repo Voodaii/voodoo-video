@@ -19,7 +19,8 @@ using Voodoo.Video.Models.ViewModels.CameraLayoutsViewModels;
 
 namespace Voodoo.Video.Controllers
 {
-    [Authorize]
+    //[Authorize]
+    [AllowAnonymous]
     public class MainController : BaseController
     {
         private readonly ILogger<MainController> _logger;
@@ -41,8 +42,7 @@ namespace Voodoo.Video.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
-        [HttpGet("/")]
+        
         public IActionResult Index()
         {
             var layout = _context.CameraLayouts
@@ -84,7 +84,7 @@ namespace Voodoo.Video.Controllers
         [HttpGet("/new-layout-form")]
         public IActionResult NewLayoutForm()
         {
-            return PartialView("NewDashboardLayout");
+            return PartialView("NewDashboardLayout", new NewLayoutViewModel());
         }
         
         //!! Create a new layout.

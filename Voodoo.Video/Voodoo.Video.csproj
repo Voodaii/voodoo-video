@@ -37,6 +37,7 @@
   <ItemGroup>
     <Folder Include="Areas\Identity\Pages\Shared" />
     <Folder Include="Migrations" />
+    <Folder Include="wwwroot\vendor\nucleo" />
     <Folder Include="wwwroot\vendor\requirejs\" />
     <Folder Include="wwwroot\vendor\underscore\" />
   </ItemGroup>
